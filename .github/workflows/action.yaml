@@ -20,7 +20,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./precode
-          file: Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/heroesapp:${{ github.ref_name }}-version-${{ github.run_id }}
   deploy:
