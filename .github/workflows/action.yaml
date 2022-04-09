@@ -10,6 +10,19 @@ jobs:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     steps:
-      - name: clone code
+      - name: Print Global Environment Variables
         run: echo $FOO
       - name: Print Job Environment Variables
+        run: |
+          echo ${{ env.LITERAL }}
+          echo ${{ env.INTERPOLATION }}
+          echo ${{ env.EXPRESSION }}
+          echo $LITERAL
+          echo $INTERPOLATION
+          echo $EXPRESSION
+      - name: Print Step Environment Variables
+        env:
+          STEPVAR: my step
+        run: |
+          echo ${{ env.STEPVAR }}
+          echo $STEPVAR
