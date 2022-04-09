@@ -35,10 +35,8 @@ jobs:
       - name: render configs
         run: |
           mkdir deploy
-          cat precode/docker-compose-ci.yaml
           cat precode/docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
-      - name: ls deploy
-        run: ls -lav deploy
+          cat precode/docker-compose.yaml
       - name: create folder
         uses: appleboy/ssh-action@master
         with:
@@ -53,7 +51,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
-          source: "deploy/docker-compose-ci.yaml"
+          source: "deploy/docker-compose.yaml"
           target: "home/skypro/heroesapp"
       - name: run docker-compose
         uses: appleboy/ssh-action@master
