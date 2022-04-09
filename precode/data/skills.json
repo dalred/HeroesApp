@@ -1,0 +1,14 @@
+{
+  "skill_names": [
+    {
+      "name": "Fierce Kick",
+      "damage": 12,
+      "stamina_per_use": 6
+    },
+    {
+      "name": "Powerful thrust",
+      "damage": 15,
+      "stamina_per_use": 5
+    }
+  ]
+}
