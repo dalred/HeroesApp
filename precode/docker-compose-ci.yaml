@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  api:
+    container_name: HeroesApp
+    image: dalred/HeroesApp:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
+    ports:
+      - 8080:80

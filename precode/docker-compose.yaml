@@ -1,7 +1,0 @@
-version: "3.9"
-services:
-  api:
-    container_name: flask-app
-    image: dalred/coursework_4:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
-    ports:
-      - 8080:80
