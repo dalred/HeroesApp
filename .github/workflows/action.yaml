@@ -52,7 +52,6 @@ jobs:
           password: $SSH_PASSWORD
           source: "deploy/docker-compose-ci.yaml"
           target: "/home/skypro/heroesapp"
-          strip_components: 1
       - name: run docker-compose
         uses: appleboy/ssh-action@master
         with:
@@ -61,6 +60,6 @@ jobs:
           password: $SSH_PASSWORD
           script: |
             echo homepath $HOME
-            cd heroesapp
+            cd home/skypro/heroesapp
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
