@@ -22,7 +22,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/HeroesApp:${{ github.ref_name }}-version-${{ github.run_id }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/heroesapp:${{ github.ref_name }}-version-${{ github.run_id }}
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push
@@ -40,7 +40,7 @@ jobs:
           username: $SSH_USERNAME
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            mkdir /home/$SSH_USERNAME/heroesApp
+            mkdir /home/$SSH_USERNAME/heroesapp
       - name: clone files to server
         uses: appleboy/scp-action@master
         with:
@@ -48,7 +48,7 @@ jobs:
           username: $SSH_USERNAME
           password: ${{ secrets.SSH_PASSWORD }}
           source: "deploy/docker-compose-ci.yaml"
-          target: "heroesApp"
+          target: "heroesapp"
           strip_components: 1
       - name: run docker-compose
         uses: appleboy/ssh-action@master
@@ -58,6 +58,6 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             echo homepath $HOME
-            cd heroesApp
+            cd heroesapp
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
