@@ -6,12 +6,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    needs: build_and_push
     env:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     steps:
-      - name: Print Global Environment Variables
+      - name: clone code
         run: echo $FOO
       - name: Print Job Environment Variables
       run: |
