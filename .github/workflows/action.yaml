@@ -43,7 +43,7 @@ jobs:
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
           script: |
-            mkdir /home/$SSH_USERNAME/heroesapp
+            echo ${{ secrets.SSH_PASSWORD }} | sudo -S mkdir /home/$SSH_USERNAME/heroesapp
       - name: clone files to server
         uses: appleboy/scp-action@master
         with:
