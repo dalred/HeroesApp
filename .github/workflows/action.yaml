@@ -7,7 +7,7 @@ jobs:
   validate-env-vars:
     runs-on: ubuntu-latest
     env:
-      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      SSH_USERNAME: "sssssss"
       SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     steps:
       - name: Print Global Environment Variables
