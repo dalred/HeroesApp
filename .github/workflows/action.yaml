@@ -35,7 +35,7 @@ jobs:
       - name: render configs
         run: |
           mkdir deploy
-          cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
+          cat precode/docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
       - name: create folder
         uses: appleboy/ssh-action@master
         with:
