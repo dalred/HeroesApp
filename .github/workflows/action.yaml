@@ -4,7 +4,7 @@ on:
     branches:
       - 'main'
 jobs:
-  deploy:
+  validate-env-vars:
     runs-on: ubuntu-latest
     env:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
