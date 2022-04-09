@@ -52,6 +52,6 @@ jobs:
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
           script: |
-            cd $(echo ~${{ SSH_USERNAME }}/heroesapp)
+            cd $(echo ~$SSH_USERNAME/heroesapp)
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
