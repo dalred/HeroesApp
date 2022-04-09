@@ -11,6 +11,6 @@ jobs:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     steps:
-    - name: run docker-compose
+      - name: run docker-compose
         run: |
-          $(echo ~$SSH_USERNAME/heroesapp)
+        $(echo ~$SSH_USERNAME/heroesapp)
