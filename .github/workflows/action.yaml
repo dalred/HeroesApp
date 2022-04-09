@@ -36,6 +36,8 @@ jobs:
         run: |
           mkdir deploy
           cat precode/docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
+      - name: ls deploy
+        run: ls -lav deploy
       - name: create folder
         uses: appleboy/ssh-action@master
         with:
