@@ -51,7 +51,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
-          run: |
+          script: |
             cd heroesapp
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
