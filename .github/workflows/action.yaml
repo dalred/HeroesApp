@@ -44,6 +44,7 @@ jobs:
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
           script: |
+            ls -lav
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S mkdir -p /${SSH_USERNAME}/skypro/heroesapp
       - name: clone files to server
         uses: appleboy/scp-action@master
@@ -52,7 +53,7 @@ jobs:
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
           source: "deploy/docker-compose.yaml"
-          target: "home/skypro/heroesapp"
+          target: "heroesapp"
       - name: run docker-compose
         uses: appleboy/ssh-action@master
         with:
