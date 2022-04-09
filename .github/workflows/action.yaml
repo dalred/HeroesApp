@@ -11,6 +11,8 @@ jobs:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     steps:
-      - name: run docker-compose
+      - name: Print Global Environment Variables
+        run: echo $FOO
+      - name: Print Job Environment Variables
       run: |
         echo ~$SSH_USERNAME/heroesapp
