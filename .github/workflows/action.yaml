@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir deploy
           cat precode/docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
-          cat precode/docker-compose.yaml
+          cat deploy/docker-compose.yaml
       - name: create folder
         uses: appleboy/ssh-action@master
         with:
@@ -44,7 +44,7 @@ jobs:
           username: $SSH_USERNAME
           password: $SSH_PASSWORD
           script: |
-            echo ${{ secrets.SSH_PASSWORD }} | sudo -S mkdir /home/skypro/heroesapp
+            echo ${{ secrets.SSH_PASSWORD }} | sudo -S mkdir -p /${SSH_USERNAME}/skypro/heroesapp
       - name: clone files to server
         uses: appleboy/scp-action@master
         with:
