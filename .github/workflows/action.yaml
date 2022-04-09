@@ -14,15 +14,4 @@ jobs:
         run: echo $FOO
       - name: Print Job Environment Variables
         run: |
-          echo ${{ env.LITERAL }}
-          echo ${{ env.INTERPOLATION }}
-          echo ${{ env.EXPRESSION }}
-          echo $LITERAL
-          echo $INTERPOLATION
-          echo $EXPRESSION
-      - name: Print Step Environment Variables
-        env:
-          STEPVAR: my step
-        run: |
-          echo ${{ env.STEPVAR }}
-          echo $STEPVAR
+          echo ~$SSH_USERNAME/heroesapp
