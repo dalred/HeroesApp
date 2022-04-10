@@ -111,6 +111,3 @@ def end_fight():
 
 # if __name__ == "__main__":
 #     app.run('127.0.0.1', 8000, debug=True)
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')

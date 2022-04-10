@@ -5,4 +5,3 @@ services:
     image: dalred/heroesapp:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
     ports:
       - 8080:80
-    command: gunicorn --bind 178.154.255.118:8080 wsgi:app
