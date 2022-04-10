@@ -18,8 +18,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: test ls
         run: |
-          mkdir deploy
-          echo cd precode
+          cd precode
           ls -lav
       - name: Build and push
         uses: docker/build-push-action@v2
