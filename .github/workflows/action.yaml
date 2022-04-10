@@ -17,7 +17,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: test ls
-          run: |
+        run: |
+          mkdir deploy
           echo cd precode
           ls -lav
       - name: Build and push
