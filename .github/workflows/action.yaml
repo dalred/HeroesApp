@@ -18,6 +18,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v2
+      - name: test ls
+        run: echo ls -lav
         with:
           context: ./precode
           file: Dockerfile
