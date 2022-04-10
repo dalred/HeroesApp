@@ -2,7 +2,6 @@ version: "3.9"
 services:
   api:
     container_name: HeroesApp
-    image: dalred/heroesapp:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
-    ports:
-      - 8080:80
+    build:
+      context: .
     command: gunicorn --bind 0.0.0.0:80 wsgi:app
