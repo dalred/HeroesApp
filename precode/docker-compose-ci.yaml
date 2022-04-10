@@ -4,4 +4,4 @@ services:
     container_name: HeroesApp
     image: dalred/heroesapp:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
     ports:
-      - 8080:80
+      - 80:80
