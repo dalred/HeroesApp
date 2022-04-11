@@ -22,9 +22,9 @@
               {{ heroes.player.stamina_ponts }}/{{ heroes.player.max_stamina }}</p>
           </div>
           <div class="col align-self-center">
-            <button type="button" onclick="window.location.href='{{url_for('fight_hit')}}'" class="btn btn-success m-2">Нанести удар</button></br>
-            <button type="button" onclick="window.location.href='{{url_for('use_skill')}}'" class="btn btn-danger m-2">Использовать умение</button></br>
-            <button type="button" onclick="window.location.href='{{url_for('pass_turn')}}'" class="btn btn-warning m-2">Пропустить ход</button></br>
+            <button {% if game_progress == False %} disabled{% endif %} type="button" onclick="window.location.href='{{url_for('fight_hit')}}'" class="btn btn-success m-2">Нанести удар</button></br>
+            <button {% if game_progress == False %} disabled{% endif %} type="button" onclick="window.location.href='{{url_for('use_skill')}}'" class="btn btn-danger m-2">Использовать умение</button></br>
+            <button {% if game_progress == False %} disabled{% endif %} type="button" onclick="window.location.href='{{url_for('pass_turn')}}'" class="btn btn-warning m-2">Пропустить ход</button></br>
             <button type="button" onclick="window.location.href='{{url_for('end_fight')}}'" class="btn btn-secondary m-2">Завершить бой</button>
           </div>
           <div class="col align-self-start">

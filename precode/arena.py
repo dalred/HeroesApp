@@ -2,6 +2,7 @@ from typing import Union
 
 from classes import Gamer, Cyberperson
 
+
 class Arena:
     def __init__(self, gamer: Gamer = None, enemy: Cyberperson = None,
                  game_progr: bool = False):
@@ -19,20 +20,17 @@ class Arena:
             return self.finish_game()
         else:
             self.regeneration()
-            result = self.enemy.strike(self.gamer)
-            return result
+            return self.enemy.strike(self.gamer)
 
     def health_check(self):
-        if self.enemy.health <= 0:
-            self.finish_game()
-        elif self.gamer.health <= 0:
+        if self.enemy.health <= 0 or self.gamer.health <= 0:
             self.finish_game()
         return self.game_progress
 
     def finish_game(self):
         name = self.gamer.name
         self.game_progress = False
-        if self.enemy.health>self.gamer.health:
+        if self.enemy.health > self.gamer.health:
             name = self.enemy.name
         result = f'Игра окончена!Победил: {name}!'
         return result
@@ -45,5 +43,3 @@ class Arena:
         result = self.gamer.strike(self.enemy, use_skill)
         result += self.next_move()
         return result
-
-

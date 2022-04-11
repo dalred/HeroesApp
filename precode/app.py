@@ -13,7 +13,7 @@ heroes = {}
 game = Arena()
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def page_index():
     return render_template('index.html')
 
@@ -55,7 +55,7 @@ def choose_enemy():
         armor = request.form.get('armor')
         weapon = request.form.get('weapon')
         unit_class = request.form.get('unit_class')
-        enemy = Cyberperson(name=name, name_unit=unit_class)
+        enemy = Cyberperson(name=name, name_unit=unit_class, max_health=30)
         enemy.equip_weapon(eq.get_weapon(weapon))
         enemy.equip_armor(eq.get_armor(armor))
         skill_name = random.choice(skills.get_skill_names)
@@ -67,7 +67,7 @@ def choose_enemy():
         return render_template('hero_choosing.html', result=result)
 
 
-@app.route("/fight/", methods=["GET", "POST"])
+@app.route("/fight/")
 def fight():
     if request.method == "GET":
         result = 'Бой начался!'
@@ -75,15 +75,14 @@ def fight():
         return render_template('fight.html', heroes=heroes, result=result)
 
 
-@app.route("/fight/hit", methods=["GET", "POST"])
+@app.route("/fight/hit")
 def fight_hit():
     if request.method == "GET":
-        battle_result = 'test'
         if not game.game_progress:
             result = game.finish_game()
         else:
             result = game.hit()
-        return render_template('fight.html', heroes=heroes, result=result)
+        return render_template('fight.html', heroes=heroes, result=result, game_progress=game.game_progress)
 
 @app.route("/fight/use-skill", methods=["GET", "POST"])
 def use_skill():
@@ -92,9 +91,9 @@ def use_skill():
             result = game.finish_game()
         else:
             result = game.hit(use_skill=True)
-        return render_template('fight.html', heroes=heroes, result=result)
+        return render_template('fight.html', heroes=heroes, result=result, game_progress=game.game_progress)
 
-@app.route("/fight/pass-turn", methods=["GET", "POST"])
+@app.route("/fight/pass-turn")
 def pass_turn():
     if request.method == "GET":
         if not game.game_progress:
@@ -102,9 +101,9 @@ def pass_turn():
         else:
             result = f'{game.gamer.name}: пропускаю ход.'
             result += game.next_move()
-        return render_template('fight.html', heroes=heroes, result=result)
+        return render_template('fight.html', heroes=heroes, result=result, game_progress=game.game_progress)
 
-@app.route("/fight/end-fight", methods=["GET", "POST"])
+@app.route("/fight/end-fight")
 def end_fight():
     if request.method == "GET":
         return redirect(url_for('page_index'))
