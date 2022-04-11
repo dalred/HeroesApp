@@ -55,7 +55,7 @@ def choose_enemy():
         armor = request.form.get('armor')
         weapon = request.form.get('weapon')
         unit_class = request.form.get('unit_class')
-        enemy = Cyberperson(name=name, name_unit=unit_class, max_health=30)
+        enemy = Cyberperson(name=name, name_unit=unit_class)
         enemy.equip_weapon(eq.get_weapon(weapon))
         enemy.equip_armor(eq.get_armor(armor))
         skill_name = random.choice(skills.get_skill_names)
